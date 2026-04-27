@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "gsc-pap": {
+      "type": "http",
+      "url": "https://mcp.gscpap.com/mcp",
+      "headers": {
+        "Authorization": "Bearer ${GSC_PAP_TOKEN}"
+      }
+    }
+  }
+}

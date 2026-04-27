@@ -1,0 +1,27 @@
+{
+  "$schema": "https://claude.com/schemas/plugin.json",
+  "name": "gsc-pap",
+  "version": "0.1.0",
+  "description": "Ask Claude about your Google Search Console - top queries, decaying pages, ranking trends, quick wins. Plug-and-play hosted MCP, no GCP project required.",
+  "author": {
+    "name": "Ali Arif Soydas",
+    "email": "support@gscpap.com",
+    "url": "https://gscpap.com"
+  },
+  "homepage": "https://gscpap.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aliarifsoydas/gsc-pap-claude-plugin"
+  },
+  "license": "MIT",
+  "keywords": [
+    "seo",
+    "google-search-console",
+    "gsc",
+    "search-analytics",
+    "mcp",
+    "marketing",
+    "site-audit"
+  ],
+  "categories": ["productivity", "data"]
+}
