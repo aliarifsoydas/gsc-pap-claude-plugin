@@ -1,8 +1,8 @@
 {
   "$schema": "https://claude.com/schemas/plugin.json",
   "name": "gsc-pap",
-  "version": "0.1.0",
-  "description": "Ask Claude about your Google Search Console - top queries, decaying pages, ranking trends, quick wins. Plug-and-play hosted MCP, no GCP project required.",
+  "version": "0.2.0",
+  "description": "Ask Claude about your Google Search Console - top queries, decaying pages, ranking trends, quick wins, content cannibalization. 18 read-only tools, per-token site scoping, per-token rate limits. Plug-and-play hosted MCP, no GCP project required.",
   "author": {
     "name": "Ali Arif Soydas",
     "email": "support@gscpap.com",
