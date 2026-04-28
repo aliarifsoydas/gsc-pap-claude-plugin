@@ -4,7 +4,7 @@ Ask Claude about your Google Search Console data — top queries, decaying pages
 
 ## What it adds
 
-A single MCP server (`gsc-pap`) exposing 20 tools over the Google Search Console + PageSpeed Insights APIs:
+A single MCP server (`gsc-pap`) exposing 30 tools over the Google Search Console + Google Analytics 4 + PageSpeed Insights APIs:
 
 **Spot quick SEO wins**
 - `find_quick_wins` — pages ranking positions 11–20 with high impressions (best ROI for optimization)
@@ -33,6 +33,18 @@ A single MCP server (`gsc-pap`) exposing 20 tools over the Google Search Console
 - `search_analytics_query` — full Search Analytics API surface (any dimension + filter)
 - `get_search_by_page_query` — drill into a page's query mix
 
+**Connect search to engagement & revenue (GA4)** *(new in v0.4)*
+- `list_ga4_properties` — discover the GA4 property_id needed for the other GA4 tools
+- `ga4_overview` — users / sessions / page views / bounce / engagement, with daily breakdown
+- `ga4_top_pages` — top landing pages by sessions
+- `ga4_traffic_sources` — by channel / source / medium / campaign
+- `ga4_realtime` — last 30 minutes active users
+- `ga4_conversions_by_source` — source × medium with conversions + revenue
+- `ga4_user_demographics` — country, device, browser slices
+- `ga4_engagement` — per-page engagement rate, duration, bounce
+- `ga4_compare_periods` — diff any window for any GA4 metric (WoW, MoM)
+- `correlate_gsc_to_ga4` — KILLER cross-tool: GSC clicks per page joined to GA4 sessions, conversions, revenue per page
+
 **Manage sites & sitemaps**
 - `list_sites`, `get_site_details` — verified property management
 - `list_sitemaps`, `get_sitemap_details` — sitemap health
@@ -47,6 +59,8 @@ Use it in chat:
 > Run a Lighthouse audit on https://example.com/pricing and list the top 3 opportunities by potential ms savings.
 
 > Pull my GSC data from January 2024 — that's beyond Google's 16-month retention.
+
+> Correlate my Search Console pages with GA4 conversions for the last 28 days — which top-clicked pages bring zero conversions?
 
 ## Install
 
