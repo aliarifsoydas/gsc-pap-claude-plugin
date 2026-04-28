@@ -4,27 +4,49 @@ Ask Claude about your Google Search Console data — top queries, decaying pages
 
 ## What it adds
 
-A single MCP server (`gsc-pap`) exposing 18 tools over the Google Search Console API:
+A single MCP server (`gsc-pap`) exposing 20 tools over the Google Search Console + PageSpeed Insights APIs:
 
-- `get_performance_overview` — clicks, impressions, position over a window
-- `find_quick_wins` — pages ranking 5–20 with high impressions (best ROI for optimization)
-- `find_content_decay` — pages losing clicks vs. a baseline window
-- `find_cannibalization` — multiple pages competing for the same query
-- `compare_periods` — week-over-week, month-over-month deltas
+**Spot quick SEO wins**
+- `find_quick_wins` — pages ranking positions 11–20 with high impressions (best ROI for optimization)
+- `find_cannibalization` — multiple pages competing for the same query, splitting CTR
+
+**Find what's losing traffic**
+- `find_content_decay` — pages losing organic traffic over time
 - `historical_position_trend` — long-term position trajectory for a query/page
-- `inspect_url`, `batch_inspect_urls` — index coverage + mobile usability checks
-- `list_sitemaps`, `get_sitemap_details` — sitemap health
-- `search_analytics_query`, `search_analytics_archive` — raw + archived queries
+- `compare_periods` — diff any two windows (e.g. last 28 days vs prior 28)
+
+**Beat the 16-month limit**
+- `search_analytics_archive` — query your full GSC history beyond Google's 16-month retention
+- `archive_status` — per-site archive coverage (earliest/latest date, row count, last run)
+
+**Diagnose performance & Core Web Vitals** *(new in v0.3)*
+- `pagespeed_insights` — Lighthouse audit: Performance / Accessibility / Best Practices / SEO scores + CWV + top opportunities
+- `pagespeed_field_data` — real-user CrUX metrics (LCP / INP / CLS p75) for URL and origin level
+
+**Diagnose indexing issues**
+- `get_index_coverage_summary` — account-wide breakdown of indexing states
+- `inspect_url` — single-URL deep dive (URL Inspection API result)
+- `batch_inspect_urls` — bulk URL Inspection up to 2,000 URLs
+
+**Pull performance data**
+- `get_performance_overview` — clicks, impressions, CTR, position snapshot
+- `search_analytics_query` — full Search Analytics API surface (any dimension + filter)
+- `get_search_by_page_query` — drill into a page's query mix
+
+**Manage sites & sitemaps**
 - `list_sites`, `get_site_details` — verified property management
-- `detect_duplicate_properties` — find domain/URL property duplicates
-- `get_index_coverage_summary`, `get_search_by_page_query` — coverage diagnostics
-- `archive_status` — view archived data extent
+- `list_sitemaps`, `get_sitemap_details` — sitemap health
+- `detect_duplicate_properties` — find domain/URL property duplicates that split your reporting
 
 Use it in chat:
 
 > Show me my 5 worst-decaying pages last 30 days, with the queries they used to rank for.
 
 > Which pages are stuck at position 11–20 with 1k+ impressions? Suggest content tweaks for the top 3.
+
+> Run a Lighthouse audit on https://example.com/pricing and list the top 3 opportunities by potential ms savings.
+
+> Pull my GSC data from January 2024 — that's beyond Google's 16-month retention.
 
 ## Install
 
