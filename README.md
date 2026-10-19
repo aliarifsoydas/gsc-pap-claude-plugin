@@ -2,12 +2,12 @@
 
 Ask Claude about your Google Search Console data: top queries, decaying pages, ranking trends, quick wins, cannibalization, Core Web Vitals, and GA4 conversions per landing page.
 
-**Free. 34 read-only tools. Hosted, so there is no Google Cloud project, no Python and no JSON credentials to manage.** You sign in with Google at [gscpap.com](https://gscpap.com) and connect; the OAuth client is already registered, for everyone.
+**Free. 36 read-only tools. Hosted, so there is no Google Cloud project, no Python and no JSON credentials to manage.** You sign in with Google at [gscpap.com](https://gscpap.com) and connect; the OAuth client is already registered, for everyone.
 
 | | |
 |---|---|
 | Price | Free, $0. No credit card, no trial clock, no paid tier today. [Pricing](https://gscpap.com/pricing) |
-| Tools | 34, all read-only |
+| Tools | 36, all read-only |
 | Data sources | Search Console, Google Analytics 4, PageSpeed Insights, live Google SERPs |
 | MCP endpoint | `https://mcp.gscpap.com/mcp` (streamable HTTP) |
 | Auth | Google sign-in. OAuth 2.0 with Dynamic Client Registration for connectors, or a bearer token for config-file clients |
@@ -16,7 +16,7 @@ Ask Claude about your Google Search Console data: top queries, decaying pages, r
 
 ## What it adds
 
-A single MCP server (`gsc-pap`) exposing 34 tools over the Search Console, Google Analytics 4, PageSpeed Insights and SERP APIs:
+A single MCP server (`gsc-pap`) exposing 36 tools over the Search Console, Google Analytics 4, PageSpeed Insights and SERP APIs:
 
 **Spot quick SEO wins**
 - `find_quick_wins`: queries at positions 5 to 20 with at least 100 impressions but under 5% CTR, which is where a title or snippet rewrite pays
@@ -26,6 +26,7 @@ A single MCP server (`gsc-pap`) exposing 34 tools over the Search Console, Googl
 - `find_content_decay`: pages losing organic traffic over time
 - `historical_position_trend`: one query's position over the last N days, trending up, down or just volatile
 - `compare_periods`: diff any two windows, for example the last 28 days against the prior 28
+- `find_dead_pages`: pages appearing for months that have never earned a click, split by whether Google shows them and nobody clicks or barely shows them at all
 
 **Beat the 16-month limit**
 - `search_analytics_archive`: query your full history, past Google's 16-month retention
@@ -44,6 +45,7 @@ A single MCP server (`gsc-pap`) exposing 34 tools over the Search Console, Googl
 - `get_index_coverage_summary`: account-wide breakdown of indexing states
 - `inspect_url`: one URL in depth, straight from the URL Inspection API
 - `batch_inspect_urls`: bulk URL inspection, up to 2,000 URLs
+- `find_new_pages`: pages Search Console started showing this week, and whether each has earned a click yet
 
 **Pull performance data**
 - `get_performance_overview`: clicks, impressions, CTR and position in one line
