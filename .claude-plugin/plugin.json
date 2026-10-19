@@ -1,7 +1,7 @@
 {
   "$schema": "https://claude.com/schemas/plugin.json",
   "name": "gsc-pap",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Ask Claude about your Google Search Console: top queries, decaying pages, ranking trends, quick wins, cannibalization, Core Web Vitals and GA4 conversions per page. 34 read-only tools, per-token site scoping and rate limits. Free, hosted MCP, no Google Cloud project required.",
   "author": {
     "name": "Ali Arif Soydas",
