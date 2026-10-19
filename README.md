@@ -84,13 +84,15 @@ Use it in chat:
 
 ## Install
 
-### Claude.ai or ChatGPT: add it as a connector (no token, no file)
+### Claude.ai: add it as a connector (no token, no file)
 
-1. Open the connector settings in your client. In Claude.ai that is your avatar, then Settings, then Connectors, then "Add custom connector"
+1. Open the connector settings in Claude.ai: your avatar, then Settings, then Connectors, then "Add custom connector"
 2. Paste the URL `https://mcp.gscpap.com/mcp`
 3. Approve the Google sign-in when the client opens it
 
 The server implements OAuth 2.0 with Dynamic Client Registration (RFC 7591), so the client registers itself. Step by step, with screenshots: [Add a Search Console connector to Claude.ai](https://gscpap.com/integrations/claude-ai-connectors).
+
+ChatGPT supports the same flow, but custom MCP connections there are a Business and Enterprise/Edu feature on ChatGPT web, which is OpenAI's rule rather than ours: [Connect ChatGPT to Google Search Console](https://gscpap.com/integrations/chatgpt).
 
 ### Claude Code: let Claude install it (about 30 seconds)
 
@@ -121,7 +123,7 @@ source ~/.zshrc
 
 Restart Claude Code, or run `claude mcp list` to check, and the `gsc-pap` server shows up as Connected.
 
-Setup guides for the other clients (Cursor, VS Code with Copilot, Codex CLI, Gemini CLI, Windsurf, Zed, JetBrains, Continue, plain HTTP) are at [gscpap.com/integrations](https://gscpap.com/integrations).
+Setup guides for the other clients (Cursor, VS Code with Copilot, Cline, opencode, Codex CLI, Gemini CLI, Windsurf, Zed, JetBrains, Continue, Warp, Goose, LM Studio, ChatGPT, plain HTTP) are at [gscpap.com/integrations](https://gscpap.com/integrations).
 
 ## How it works
 
