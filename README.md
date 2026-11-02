@@ -2,12 +2,12 @@
 
 Ask Claude about your Google Search Console data: top queries, decaying pages, ranking trends, quick wins, cannibalization, Core Web Vitals, and GA4 conversions per landing page.
 
-**Free. 36 read-only tools. Hosted, so there is no Google Cloud project, no Python and no JSON credentials to manage.** You sign in with Google at [gscpap.com](https://gscpap.com) and connect; the OAuth client is already registered, for everyone.
+**Free. 38 read-only tools. Hosted, so there is no Google Cloud project, no Python and no JSON credentials to manage.** You sign in with Google at [gscpap.com](https://gscpap.com) and connect; the OAuth client is already registered, for everyone.
 
 | | |
 |---|---|
 | Price | Free, $0. No credit card, no trial clock, no paid tier today. [Pricing](https://gscpap.com/pricing) |
-| Tools | 36, all read-only |
+| Tools | 38, all read-only |
 | Data sources | Search Console, Google Analytics 4, PageSpeed Insights, live Google SERPs |
 | MCP endpoint | `https://mcp.gscpap.com/mcp` (streamable HTTP) |
 | Auth | Google sign-in. OAuth 2.0 with Dynamic Client Registration for connectors, or a bearer token for config-file clients |
@@ -16,7 +16,7 @@ Ask Claude about your Google Search Console data: top queries, decaying pages, r
 
 ## What it adds
 
-A single MCP server (`gsc-pap`) exposing 36 tools over the Search Console, Google Analytics 4, PageSpeed Insights and SERP APIs:
+A single MCP server (`gsc-pap`) exposing 38 tools over the Search Console, Google Analytics 4, PageSpeed Insights and SERP APIs:
 
 **Spot quick SEO wins**
 - `find_quick_wins`: queries at positions 5 to 20 with at least 100 impressions but under 5% CTR, which is where a title or snippet rewrite pays
@@ -33,7 +33,7 @@ A single MCP server (`gsc-pap`) exposing 36 tools over the Search Console, Googl
 - `archive_status`: per-site coverage, earliest and latest day, row count, last run
 
 **See the SERP your rankings live in**
-- `serp_top_results`: the live top organic results for a query and country, plus which SERP features are present (AI Overview, featured snippet, map pack, People Also Ask)
+- `serp_top_results`: the live top organic results for a query and country, plus which SERP features are present (featured snippet, map pack, People Also Ask; AI Overviews are reported as unknown)
 - `serp_competitor_analysis`: where your domain sits for a query and the full top 10 around it
 - `serp_features_audit`: up to 25 queries at once, to explain a low CTR at a good position
 
@@ -51,6 +51,10 @@ A single MCP server (`gsc-pap`) exposing 36 tools over the Search Console, Googl
 - `get_performance_overview`: clicks, impressions, CTR and position in one line
 - `search_analytics_query`: the whole Search Analytics surface, any dimension and filter
 - `get_search_by_page_query`: the query mix behind one page
+
+**See how AI assistants send you traffic (GEO)**
+- `ga4_ai_traffic`: visits from ChatGPT, Perplexity, Gemini, Claude and Copilot, per engine, against organic, and the pages they send people to; `property_id="all"` compares every site
+- `find_ai_overview_suspects`: queries whose CTR fell while their position held, the footprint an AI Overview leaves
 
 **Connect search to engagement and revenue (GA4)**
 - `list_ga4_properties`: find the property_id the other GA4 tools need
