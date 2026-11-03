@@ -1,0 +1,10 @@
+{
+  "name": "gsc-pap",
+  "version": "0.3.4",
+  "description": "Read-only Google Search Console, GA4, PageSpeed Insights and live SERPs over MCP. Hosted and free; sign in with Google on first use.",
+  "mcpServers": {
+    "gsc-pap": {
+      "httpUrl": "https://mcp.gscpap.com/mcp"
+    }
+  }
+}
