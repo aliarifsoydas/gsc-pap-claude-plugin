@@ -15,6 +15,16 @@ Ask Claude about your Google Search Console data: top queries, decaying pages, r
 | History | A Personal Archive copies the 16 months Google still has when you connect, then keeps every new day, so your history grows past Google's 16-month limit |
 | Registry | [`com.gscpap/gsc-pap`](https://registry.modelcontextprotocol.io/v0/servers?search=com.gscpap) in the official MCP Registry |
 
+## What's new
+
+- **2026-11-02** `ga4_ai_traffic`: the visits ChatGPT, Perplexity, Gemini, Claude and Copilot send you, per engine, against Google organic, and which pages they land on. It also counts the assistant visits GA4 files under Referral instead of its AI Assistant channel
+- **2026-11-02** `find_ai_overview_suspects`: queries whose CTR fell while their position held, the mark an AI Overview leaves in Search Console
+- **2026-11-02** SERP tools report a feature as unavailable instead of absent when the data is missing, so a missing AI Overview is never read as proof there is none
+- **2026-10-31** Days Search Console returned empty are fetched again two days later, so the archive no longer keeps a day Google had not finalised
+- **2026-10-31** When the Google connection stops working, the assistant is told so, gets the reconnect link, and knows which tools still answer from the archive
+
+Every change, with dates: [gscpap.com/changelog](https://gscpap.com/changelog)
+
 ## What it adds
 
 A single MCP server (`gsc-pap`) exposing 38 tools over the Search Console, Google Analytics 4, PageSpeed Insights and SERP APIs:
@@ -130,7 +140,85 @@ source ~/.zshrc
 
 Restart Claude Code, or run `claude mcp list` to check, and the `gsc-pap` server shows up as Connected.
 
+### Cursor
+
+Create a token at [app.gscpap.com/account/tokens](https://app.gscpap.com/account/tokens), then add this to `~/.cursor/mcp.json` (Windows: `%USERPROFILE%\.cursor\mcp.json`):
+
+```json
+{
+  "mcpServers": {
+    "gsc-pap": {
+      "url": "https://mcp.gscpap.com/mcp",
+      "headers": {
+        "Authorization": "Bearer YOUR_TOKEN"
+      }
+    }
+  }
+}
+```
+
+Full guide: [Connect Cursor to Google Search Console](https://gscpap.com/integrations/cursor).
+
+### VS Code (GitHub Copilot)
+
+Add this to `.vscode/mcp.json`. VS Code asks for the token once and stores it as a secret:
+
+```json
+{
+  "servers": {
+    "gsc-pap": {
+      "type": "http",
+      "url": "https://mcp.gscpap.com/mcp",
+      "headers": {
+        "Authorization": "Bearer ${input:gsc_pap_token}"
+      }
+    }
+  },
+  "inputs": [
+    {
+      "type": "promptString",
+      "id": "gsc_pap_token",
+      "description": "GSC PAP bearer token (from app.gscpap.com/account/tokens)",
+      "password": true
+    }
+  ]
+}
+```
+
+Full guide: [Connect GitHub Copilot in VS Code to Google Search Console](https://gscpap.com/integrations/vscode-copilot).
+
+### Claude Desktop
+
+Claude Desktop reaches remote servers through `mcp-remote`, so it needs Node.js. Add this to `~/Library/Application Support/Claude/claude_desktop_config.json` (Windows: `%APPDATA%\Claude\claude_desktop_config.json`) and restart Claude Desktop:
+
+```json
+{
+  "mcpServers": {
+    "gsc-pap": {
+      "command": "npx",
+      "args": ["-y", "mcp-remote", "https://mcp.gscpap.com/mcp", "--header", "Authorization:${AUTH}"],
+      "env": {
+        "AUTH": "Bearer YOUR_TOKEN"
+      }
+    }
+  }
+}
+```
+
+Full guide: [Connect Claude Desktop to Google Search Console](https://gscpap.com/integrations/claude-desktop). You can also skip the file and add it as a connector, as in the Claude.ai section above.
+
+### Other clients
+
 Setup guides for the other clients (Cursor, VS Code with Copilot, Cline, opencode, Codex CLI, Gemini CLI, Windsurf, Zed, JetBrains, Continue, Warp, Goose, LM Studio, ChatGPT, plain HTTP) are at [gscpap.com/integrations](https://gscpap.com/integrations).
+
+## Troubleshooting
+
+- **"Missing or invalid bearer token"**: the token in your config is wrong or was revoked. Create a new one at [app.gscpap.com/account/tokens](https://app.gscpap.com/account/tokens) and paste it in, with `Bearer ` and a space in front where the config asks for the whole header.
+- **The server does not show up after editing the config**: check the file for JSON mistakes such as a trailing comma, check that `gsc-pap` sits inside `mcpServers` (`servers` in VS Code), then restart the client.
+- **Claude Desktop: "npx: command not found" or the server never starts**: Node.js is missing or not on Claude Desktop's PATH. Install the LTS from nodejs.org and restart.
+- **Tools appear but a site is missing**: the site is not on your allowlist, or the token is scoped to other sites. Check [app.gscpap.com/account/sites](https://app.gscpap.com/account/sites) and the token's **Edit access**.
+- **The assistant says the Google connection stopped working**: access was removed in your Google account, the password changed, or the sign-in aged out. Reconnect at [app.gscpap.com/login?reconnect=1](https://app.gscpap.com/login?reconnect=1). Nothing archived is lost.
+- **Still stuck**: email support@gscpap.com with the error message.
 
 ## How it works
 
