@@ -13,6 +13,7 @@ Ask Claude about your Google Search Console data: top queries, decaying pages, r
 | Auth | Google sign-in. OAuth 2.0 with Dynamic Client Registration for connectors, or a bearer token for config-file clients |
 | Scopes | `webmasters.readonly`, plus `analytics.readonly` if you connect GA4. It cannot change a property, submit a sitemap or remove a URL |
 | History | A Personal Archive copies the 16 months Google still has when you connect, then keeps every new day, so your history grows past Google's 16-month limit |
+| Registry | [`com.gscpap/gsc-pap`](https://registry.modelcontextprotocol.io/v0/servers?search=com.gscpap) in the official MCP Registry |
 
 ## What it adds
 
@@ -137,14 +138,15 @@ Setup guides for the other clients (Cursor, VS Code with Copilot, Cline, opencod
 - **Per-site allowlist**: Google's scope is account-wide (`webmasters.readonly`), so the server adds a per-user, per-site authorization layer on top. You decide which properties Claude can see.
 - **Per-token site scope**: each token can be narrowed to a subset of your authorized sites, at [app.gscpap.com/account/tokens](https://app.gscpap.com/account/tokens) under **Edit access**. Useful for per-client tokens, a scoped CI token, or limiting the blast radius if a token leaks.
 - **Rate limits**: 30 requests per minute and 500 per hour per token, 60 per minute and 1,000 per hour for the account across all its tokens. Live usage is on [app.gscpap.com/account](https://app.gscpap.com/account).
-- **Audit log**: every tool call is recorded in your own account.
+- **Usage log**: every tool call is logged and shown in your own account at [app.gscpap.com/account](https://app.gscpap.com/account).
 - **Read-only**: nothing in the surface can modify your sites, sitemaps or settings.
 
 ## Privacy and data
 
-- Your Google refresh token is encrypted at rest with AES-256-GCM
+- Your Google refresh token is encrypted at rest with AES-256-GCM; bearer tokens are stored only as SHA-256 hashes
 - Aggregate analytics through Google Analytics 4 with IP anonymisation. No marketing pixels, no third-party ad networks. See the [Privacy Policy](https://gscpap.com/privacy)
-- Your Search Console and Analytics data is never sold, shared or used to train anything
+- Your data is not sold, rented or traded, and it is not used to train AI models. It is shared only with the providers that run the service, which the Privacy Policy names
+- Use of data received from Google APIs follows the [Google API Services User Data Policy](https://developers.google.com/terms/api-services-user-data-policy), including the Limited Use requirements
 - Revoke at any time from [app.gscpap.com/account/tokens](https://app.gscpap.com/account/tokens), or from your Google account permissions
 
 ## Pricing
@@ -154,6 +156,9 @@ Free. $0, no credit card, no trial expiry and no feature behind an upgrade promp
 ## Support
 
 - Guides: https://gscpap.com/guides
+- What changed and when: https://gscpap.com/changelog
+- Hosted and self-hosted Search Console MCP servers compared: https://gscpap.com/google-search-console-mcp-servers
+- For AI assistants: https://gscpap.com/llms.txt (every page is also Markdown: append `.md` to its URL)
 - All tools: https://gscpap.com/tools
 - FAQ: https://gscpap.com/faq
 - Issues: https://github.com/aliarifsoydas/gsc-pap-claude-plugin/issues
