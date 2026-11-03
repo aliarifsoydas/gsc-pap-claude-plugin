@@ -1,4 +1,4 @@
-# GSC PAP: Google Search Console for Claude
+# GSCPAP - Google Search Console & GA4 MCP Server for Claude, ChatGPT and Cursor
 
 Ask Claude about your Google Search Console data: top queries, decaying pages, ranking trends, quick wins, cannibalization, Core Web Vitals, and GA4 conversions per landing page.
 
