@@ -1,9 +1,9 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "com.gscpap/gsc-pap",
-  "title": "GSCPAP - Google Search Console & GA4 MCP Server",
+  "title": "GSCPAP - Google Search Console, GA4, PageSpeed Insights & live SERPs MCP",
   "description": "Google Search Console, GA4 and PageSpeed MCP server for Claude, ChatGPT and Cursor. Free, hosted.",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "websiteUrl": "https://gscpap.com",
   "repository": {
     "url": "https://github.com/aliarifsoydas/gsc-pap-claude-plugin",
