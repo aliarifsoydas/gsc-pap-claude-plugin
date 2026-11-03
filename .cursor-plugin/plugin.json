@@ -1,0 +1,17 @@
+{
+  "name": "gsc-pap",
+  "displayName": "GSCPAP - Google Search Console, GA4, PageSpeed Insights & live SERPs MCP",
+  "version": "0.3.4",
+  "description": "Ask Cursor about your Google Search Console, GA4 and PageSpeed data: top queries, decaying pages, quick wins, cannibalization, Core Web Vitals and GA4 conversions per page. 38 read-only tools, hosted and free.",
+  "author": {
+    "name": "Ali Arif Soydas",
+    "email": "support@gscpap.com",
+    "url": "https://gscpap.com"
+  },
+  "license": "MIT",
+  "homepage": "https://gscpap.com",
+  "repository": "https://github.com/aliarifsoydas/gsc-pap-claude-plugin",
+  "keywords": ["seo", "google-search-console", "gsc", "google-analytics-4", "pagespeed-insights", "core-web-vitals", "mcp"],
+  "logo": "./assets/logo-400.png",
+  "mcpServers": "./mcp.json"
+}
