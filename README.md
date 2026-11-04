@@ -50,7 +50,7 @@ A single MCP server (`gsc-pap`) exposing 38 tools over the Search Console, Googl
 
 **Diagnose performance and Core Web Vitals**
 - `pagespeed_insights`: Lighthouse audit, the four scores, Core Web Vitals and the top opportunities
-- `pagespeed_field_data`: real-user CrUX metrics (LCP, INP, CLS at p75) for a URL and for the origin
+- `pagespeed_field_data`: real-user CrUX metrics (LCP, INP, CLS at p75) for a URL and for the origin, in about a second, with an optional weekly trend of the last 25 weeks
 
 **Diagnose indexing issues**
 - `get_index_coverage_summary`: account-wide breakdown of indexing states
