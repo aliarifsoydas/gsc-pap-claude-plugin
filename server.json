@@ -3,7 +3,7 @@
   "name": "com.gscpap/gsc-pap",
   "title": "GSCPAP - Google Search Console, GA4, PageSpeed Insights & live SERPs MCP",
   "description": "Google Search Console, GA4 and PageSpeed MCP server for Claude, ChatGPT and Cursor. Free, hosted.",
-  "version": "0.3.4",
+  "version": "0.3.5",
   "websiteUrl": "https://gscpap.com",
   "repository": {
     "url": "https://github.com/aliarifsoydas/gsc-pap-claude-plugin",

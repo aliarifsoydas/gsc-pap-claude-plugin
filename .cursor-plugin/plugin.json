@@ -1,7 +1,7 @@
 {
   "name": "gsc-pap",
   "displayName": "GSCPAP - Google Search Console, GA4, PageSpeed Insights & live SERPs MCP",
-  "version": "0.3.4",
+  "version": "0.3.5",
   "description": "Ask Cursor about your Google Search Console, GA4 and PageSpeed data: top queries, decaying pages, quick wins, cannibalization, Core Web Vitals and GA4 conversions per page. 38 read-only tools, hosted and free.",
   "author": {
     "name": "Ali Arif Soydas",
