@@ -59,7 +59,7 @@ A single MCP server (`gsc-pap`) exposing 38 tools over the Search Console, Googl
 - `find_new_pages`: pages Search Console started showing this week, and whether each has earned a click yet
 
 **Pull performance data**
-- `get_performance_overview`: clicks, impressions, CTR and position in one line
+- `get_performance_overview`: clicks, impressions, CTR and position in one line, for any date range or the last N days
 - `search_analytics_query`: the whole Search Analytics surface, any dimension and filter
 - `get_search_by_page_query`: the query mix behind one page
 
@@ -68,6 +68,9 @@ A single MCP server (`gsc-pap`) exposing 38 tools over the Search Console, Googl
 - `find_ai_overview_suspects`: queries whose CTR fell while their position held, the footprint an AI Overview leaves
 
 **Connect search to engagement and revenue (GA4)**
+
+Every GA4 report tool takes `days`, or an exact `start_date` and `end_date`.
+
 - `list_ga4_properties`: find the property_id the other GA4 tools need
 - `ga4_overview`: users, sessions, views, bounce and engagement, with a daily breakdown
 - `ga4_top_pages`: top landing pages by sessions
@@ -77,7 +80,7 @@ A single MCP server (`gsc-pap`) exposing 38 tools over the Search Console, Googl
 - `ga4_user_demographics`: country, device and browser slices
 - `ga4_engagement`: engagement rate, duration and bounce per page
 - `ga4_events_by_name`: scroll depth, outbound clicks, downloads and custom events, optionally per page
-- `ga4_compare_periods`: diff any window for any GA4 metric
+- `ga4_compare_periods`: diff any window for any GA4 metric, including an exact start and end date
 - `correlate_gsc_to_ga4`: the cross-tool one. Search Console clicks per page joined to GA4 sessions, conversions and revenue for that same page
 
 **Manage sites and sitemaps**
