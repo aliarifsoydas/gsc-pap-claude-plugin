@@ -2,7 +2,7 @@
 
 Ask Claude about your Google Search Console data: top queries, decaying pages, ranking trends, quick wins, cannibalization, Core Web Vitals, and GA4 conversions per landing page.
 
-**Free. 38 read-only tools. Hosted, so there is no Google Cloud project, no Python and no JSON credentials to manage.** You sign in with Google at [gscpap.com](https://gscpap.com) and connect; the OAuth client is already registered, for everyone.
+**Free. 39 tools, read-only on your Google data. Hosted, so there is no Google Cloud project, no Python and no JSON credentials to manage.** You sign in with Google at [gscpap.com](https://gscpap.com) and connect; the OAuth client is already registered, for everyone.
 
 | | |
 |---|---|
@@ -17,6 +17,7 @@ Ask Claude about your Google Search Console data: top queries, decaying pages, r
 
 ## What's new
 
+- **2026-11-08** `feature_request`: ask your assistant to file what GSC PAP cannot do yet, or vote for an existing request; voters get an email when it ships. Roadmap at app.gscpap.com/account/roadmap
 - **2026-11-02** `ga4_ai_traffic`: the visits ChatGPT, Perplexity, Gemini, Claude and Copilot send you, per engine, against Google organic, and which pages they land on. It also counts the assistant visits GA4 files under Referral instead of its AI Assistant channel
 - **2026-11-02** `find_ai_overview_suspects`: queries whose CTR fell while their position held, the mark an AI Overview leaves in Search Console
 - **2026-11-02** SERP tools report a feature as unavailable instead of absent when the data is missing, so a missing AI Overview is never read as proof there is none
@@ -27,7 +28,7 @@ Every change, with dates: [gscpap.com/changelog](https://gscpap.com/changelog)
 
 ## What it adds
 
-A single MCP server (`gsc-pap`) exposing 38 tools over the Search Console, Google Analytics 4, PageSpeed Insights and SERP APIs:
+A single MCP server (`gsc-pap`) exposing 39 tools over the Search Console, Google Analytics 4, PageSpeed Insights and SERP APIs:
 
 **Spot quick SEO wins**
 - `find_quick_wins`: queries at positions 5 to 20 with at least 100 impressions but under 5% CTR, which is where a title or snippet rewrite pays
@@ -87,6 +88,9 @@ Every GA4 report tool takes `days`, or an exact `start_date` and `end_date`.
 - `list_sites`, `get_site_details`: your verified properties
 - `list_sitemaps`, `get_sitemap_details`: sitemap health
 - `detect_duplicate_properties`: domain and URL-prefix properties that split your reporting in two
+
+**Shape the roadmap**
+- `feature_request`: search, file or vote for feature requests from the chat. The assistant shows you the text first and leaves your data out of it
 
 Use it in chat:
 
