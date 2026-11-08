@@ -2,7 +2,7 @@
 
 Ask Claude about your Google Search Console data: top queries, decaying pages, ranking trends, quick wins, cannibalization, Core Web Vitals, and GA4 conversions per landing page.
 
-**Free. 39 tools, read-only on your Google data. Hosted, so there is no Google Cloud project, no Python and no JSON credentials to manage.** You sign in with Google at [gscpap.com](https://gscpap.com) and connect; the OAuth client is already registered, for everyone.
+**Free. 41 tools, read-only on your Google data. Hosted, so there is no Google Cloud project, no Python and no JSON credentials to manage.** You sign in with Google at [gscpap.com](https://gscpap.com) and connect; the OAuth client is already registered, for everyone.
 
 | | |
 |---|---|
@@ -17,6 +17,7 @@ Ask Claude about your Google Search Console data: top queries, decaying pages, r
 
 ## What's new
 
+- **2026-11-08** `ga4_report`: any GA4 report with your own dimensions, metrics, filters and order, plus `ga4_metadata` to find the property's fields, custom ones included
 - **2026-11-08** `feature_request`: ask your assistant to file what GSC PAP cannot do yet, or vote for an existing request; voters get an email when it ships. Roadmap at app.gscpap.com/account/roadmap
 - **2026-11-02** `ga4_ai_traffic`: the visits ChatGPT, Perplexity, Gemini, Claude and Copilot send you, per engine, against Google organic, and which pages they land on. It also counts the assistant visits GA4 files under Referral instead of its AI Assistant channel
 - **2026-11-02** `find_ai_overview_suspects`: queries whose CTR fell while their position held, the mark an AI Overview leaves in Search Console
@@ -28,7 +29,7 @@ Every change, with dates: [gscpap.com/changelog](https://gscpap.com/changelog)
 
 ## What it adds
 
-A single MCP server (`gsc-pap`) exposing 39 tools over the Search Console, Google Analytics 4, PageSpeed Insights and SERP APIs:
+A single MCP server (`gsc-pap`) exposing 41 tools over the Search Console, Google Analytics 4, PageSpeed Insights and SERP APIs:
 
 **Spot quick SEO wins**
 - `find_quick_wins`: queries at positions 5 to 20 with at least 100 impressions but under 5% CTR, which is where a title or snippet rewrite pays
@@ -82,6 +83,8 @@ Every GA4 report tool takes `days`, or an exact `start_date` and `end_date`.
 - `ga4_engagement`: engagement rate, duration and bounce per page
 - `ga4_events_by_name`: scroll depth, outbound clicks, downloads and custom events, optionally per page
 - `ga4_compare_periods`: diff any window for any GA4 metric, including an exact start and end date
+- `ga4_report`: any report you can describe, with your own dimensions, metrics, filters and sort order, and GA4's own totals
+- `ga4_metadata`: the dimensions and metrics a property can report, custom ones included
 - `correlate_gsc_to_ga4`: the cross-tool one. Search Console clicks per page joined to GA4 sessions, conversions and revenue for that same page
 
 **Manage sites and sitemaps**
