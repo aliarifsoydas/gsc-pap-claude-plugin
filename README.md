@@ -90,7 +90,7 @@ Every GA4 report tool takes `days`, or an exact `start_date` and `end_date`.
 - `detect_duplicate_properties`: domain and URL-prefix properties that split your reporting in two
 
 **Shape the roadmap**
-- `feature_request`: search, file or vote for feature requests from the chat. The assistant shows you the text first and leaves your data out of it
+- `feature_request`: vote for or file feature requests from the chat. The assistant asks once whether it may report gaps by itself; until you say yes it shows you the text first. Links and site data are stripped
 
 Use it in chat:
 
