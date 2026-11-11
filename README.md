@@ -2,7 +2,7 @@
 
 Ask Claude about your Google Search Console data: top queries, decaying pages, ranking trends, quick wins, cannibalization, Core Web Vitals, and GA4 conversions per landing page.
 
-**Free. 41 tools, read-only on your Google data. Hosted, so there is no Google Cloud project, no Python and no JSON credentials to manage.** You sign in with Google at [gscpap.com](https://gscpap.com) and connect; the OAuth client is already registered, for everyone.
+**Free. 42 tools, read-only on your Google data. Hosted, so there is no Google Cloud project, no Python and no JSON credentials to manage.** You sign in with Google at [gscpap.com](https://gscpap.com) and connect; the OAuth client is already registered, for everyone.
 
 | | |
 |---|---|
@@ -17,6 +17,7 @@ Ask Claude about your Google Search Console data: top queries, decaying pages, r
 
 ## What's new
 
+- **2026-11-11** `report_missing_capability`: the assistant tells us privately when it cannot do something you asked. Every tool also takes an optional `intent`, a few words on what you are after
 - **2026-11-08** `ga4_report`: any GA4 report with your own dimensions, metrics, filters and order, plus `ga4_metadata` to find the property's fields, custom ones included
 - **2026-11-08** `feature_request`: ask your assistant to file what GSC PAP cannot do yet, or vote for an existing request; voters get an email when it ships. Roadmap at app.gscpap.com/account/roadmap
 - **2026-11-02** `ga4_ai_traffic`: the visits ChatGPT, Perplexity, Gemini, Claude and Copilot send you, per engine, against Google organic, and which pages they land on. It also counts the assistant visits GA4 files under Referral instead of its AI Assistant channel
@@ -29,7 +30,7 @@ Every change, with dates: [gscpap.com/changelog](https://gscpap.com/changelog)
 
 ## What it adds
 
-A single MCP server (`gsc-pap`) exposing 41 tools over the Search Console, Google Analytics 4, PageSpeed Insights and SERP APIs:
+A single MCP server (`gsc-pap`) exposing 42 tools over the Search Console, Google Analytics 4, PageSpeed Insights and SERP APIs:
 
 **Spot quick SEO wins**
 - `find_quick_wins`: queries at positions 5 to 20 with at least 100 impressions but under 5% CTR, which is where a title or snippet rewrite pays
@@ -93,6 +94,7 @@ Every GA4 report tool takes `days`, or an exact `start_date` and `end_date`.
 - `detect_duplicate_properties`: domain and URL-prefix properties that split your reporting in two
 
 **Shape the roadmap**
+- `report_missing_capability`: when the assistant meets something no tool here can do, it sends the GSC PAP team one private line about it (no site names, links or figures). Not a public request or a vote
 - `feature_request`: vote for or file feature requests from the chat. The assistant asks once whether it may report gaps by itself; until you say yes it shows you the text first. Links and site data are stripped
 
 Use it in chat:
