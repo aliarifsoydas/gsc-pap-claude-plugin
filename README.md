@@ -2,7 +2,7 @@
 
 Ask Claude about your Google Search Console data: top queries, decaying pages, ranking trends, quick wins, cannibalization, Core Web Vitals, and GA4 conversions per landing page.
 
-**Free. 42 tools, read-only on your Google data. Hosted, so there is no Google Cloud project, no Python and no JSON credentials to manage.** You sign in with Google at [gscpap.com](https://gscpap.com) and connect; the OAuth client is already registered, for everyone.
+**Free. 43 tools, read-only on your Google data. Hosted, so there is no Google Cloud project, no Python and no JSON credentials to manage.** You sign in with Google at [gscpap.com](https://gscpap.com) and connect; the OAuth client is already registered, for everyone.
 
 | | |
 |---|---|
@@ -17,6 +17,7 @@ Ask Claude about your Google Search Console data: top queries, decaying pages, r
 
 ## What's new
 
+- **2026-11-12** `audit_index_coverage`: the Page Indexing report Google has no API for, every sitemap URL grouped by why it is or is not indexed. `compare_periods` and `ga4_compare_periods` take filters, so one section's before and after is one call
 - **2026-11-11** `report_missing_capability`: the assistant tells us privately when it cannot do something you asked. Every tool also takes an optional `intent`, a few words on what you are after
 - **2026-11-08** `ga4_report`: any GA4 report with your own dimensions, metrics, filters and order, plus `ga4_metadata` to find the property's fields, custom ones included
 - **2026-11-08** `feature_request`: ask your assistant to file what GSC PAP cannot do yet, or vote for an existing request; voters get an email when it ships. Roadmap at app.gscpap.com/account/roadmap
@@ -30,7 +31,7 @@ Every change, with dates: [gscpap.com/changelog](https://gscpap.com/changelog)
 
 ## What it adds
 
-A single MCP server (`gsc-pap`) exposing 42 tools over the Search Console, Google Analytics 4, PageSpeed Insights and SERP APIs:
+A single MCP server (`gsc-pap`) exposing 43 tools over the Search Console, Google Analytics 4, PageSpeed Insights and SERP APIs:
 
 **Spot quick SEO wins**
 - `find_quick_wins`: queries at positions 5 to 20 with at least 100 impressions but under 5% CTR, which is where a title or snippet rewrite pays
@@ -56,9 +57,10 @@ A single MCP server (`gsc-pap`) exposing 42 tools over the Search Console, Googl
 - `pagespeed_field_data`: real-user CrUX metrics (LCP, INP, CLS at p75) for a URL and for the origin, in about a second, with an optional weekly trend of the last 25 weeks
 
 **Diagnose indexing issues**
-- `get_index_coverage_summary`: account-wide breakdown of indexing states
+- `audit_index_coverage`: every sitemap URL by indexing state and reason, the Page Indexing report rebuilt; pages with impressions skip inspection
+- `get_index_coverage_summary`: quick indexing check of your top pages
 - `inspect_url`: one URL in depth, straight from the URL Inspection API
-- `batch_inspect_urls`: bulk URL inspection, up to 2,000 URLs
+- `batch_inspect_urls`: up to 10 URLs per call, inspected in parallel
 - `find_new_pages`: pages Search Console started showing this week, and whether each has earned a click yet
 
 **Pull performance data**
