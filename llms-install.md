@@ -51,4 +51,4 @@ Call the `list_sites` tool. It returns the Search Console properties the user au
 
 If a call fails with "Missing or invalid bearer token", the token is wrong or was revoked; ask the user for a new one from https://app.gscpap.com/account/tokens.
 
-All 38 tools are read-only. None of them can change a site, submit a sitemap or remove a URL.
+All 53 tools are read-only. None of them can change a site, submit a sitemap or remove a URL.

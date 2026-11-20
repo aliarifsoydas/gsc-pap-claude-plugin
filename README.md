@@ -1,22 +1,25 @@
-# GSCPAP - Google Search Console & GA4 MCP Server for Claude, ChatGPT and Cursor
+# GSCPAP - Google Search Console, GA4 & Bing Webmaster Tools MCP Server for Claude, ChatGPT and Cursor
 
-Ask Claude about your Google Search Console data: top queries, decaying pages, ranking trends, quick wins, cannibalization, Core Web Vitals, and GA4 conversions per landing page.
+Ask Claude about your Google Search Console data: top queries, decaying pages, ranking trends, quick wins, cannibalization, Core Web Vitals, and GA4 conversions per landing page. Connect Bing Webmaster Tools too and ask about Bing next to Google.
 
-**Free. 43 tools, read-only on your Google data. Hosted, so there is no Google Cloud project, no Python and no JSON credentials to manage.** You sign in with Google at [gscpap.com](https://gscpap.com) and connect; the OAuth client is already registered, for everyone.
+**Free. 53 tools, read-only on your Google and Bing data. Hosted, so there is no Google Cloud project, no Python and no JSON credentials to manage.** You sign in with Google at [gscpap.com](https://gscpap.com) and connect; the OAuth client is already registered, for everyone.
 
 | | |
 |---|---|
 | Price | Free, $0. No credit card, no trial clock, no paid tier today. [Pricing](https://gscpap.com/pricing) |
-| Tools | 38, all read-only |
-| Data sources | Search Console, Google Analytics 4, PageSpeed Insights, live Google SERPs |
+| Tools | 53, all read-only |
+| Data sources | Search Console, Google Analytics 4, Bing Webmaster Tools, PageSpeed Insights, live Google SERPs |
 | MCP endpoint | `https://mcp.gscpap.com/mcp` (streamable HTTP) |
 | Auth | Google sign-in. OAuth 2.0 with Dynamic Client Registration for connectors, or a bearer token for config-file clients |
-| Scopes | `webmasters.readonly`, plus `analytics.readonly` if you connect GA4. It cannot change a property, submit a sitemap or remove a URL |
-| History | A Personal Archive copies the 16 months Google still has when you connect, then keeps every new day, so your history grows past Google's 16-month limit |
+| Scopes | `webmasters.readonly`, plus `analytics.readonly` if you connect GA4, plus Bing's read-only `webmaster.read` if you connect Bing. It cannot change a property, submit a sitemap or remove a URL |
+| History | A Personal Archive copies the 16 months Google still has when you connect, then keeps every new day, so your history grows past Google's 16-month limit. Your GA4 and Bing data are archived every night the same way |
 | Registry | [`com.gscpap/gsc-pap`](https://registry.modelcontextprotocol.io/v0/servers?search=com.gscpap) in the official MCP Registry |
 
 ## What's new
 
+- **2026-11-19** Bing Webmaster Tools, v0.4: nine `bing_` tools for Bing queries, pages, daily clicks and impressions, crawl health, backlinks, sitemaps and Bing's own keyword research. Connect Bing as a separate, read-only grant at app.gscpap.com/account/integrations. Your Bing data is archived every night, so its history outlasts the roughly 16 months Bing keeps
+- **2026-11-19** `ga4_archive`: read the nightly copy of your GA4 data (totals, channels, source/medium, landing pages, pages, events, countries, devices), even when Google access lapses
+- **2026-11-19** Every GA4 property and Bing site has its own on/off switch at app.gscpap.com/account/sites, and a token limited to certain sites can be limited to certain properties and Bing sites too
 - **2026-11-12** `audit_index_coverage`: the Page Indexing report Google has no API for, every sitemap URL grouped by why it is or is not indexed. `compare_periods` and `ga4_compare_periods` take filters, so one section's before and after is one call
 - **2026-11-11** `report_missing_capability`: the assistant tells us privately when it cannot do something you asked. Every tool also takes an optional `intent`, a few words on what you are after
 - **2026-11-08** `ga4_report`: any GA4 report with your own dimensions, metrics, filters and order, plus `ga4_metadata` to find the property's fields, custom ones included
@@ -31,7 +34,7 @@ Every change, with dates: [gscpap.com/changelog](https://gscpap.com/changelog)
 
 ## What it adds
 
-A single MCP server (`gsc-pap`) exposing 43 tools over the Search Console, Google Analytics 4, PageSpeed Insights and SERP APIs:
+A single MCP server (`gsc-pap`) exposing 53 tools over the Search Console, Google Analytics 4, Bing Webmaster Tools, PageSpeed Insights and SERP APIs:
 
 **Spot quick SEO wins**
 - `find_quick_wins`: queries at positions 5 to 20 with at least 100 impressions but under 5% CTR, which is where a title or snippet rewrite pays
@@ -88,7 +91,22 @@ Every GA4 report tool takes `days`, or an exact `start_date` and `end_date`.
 - `ga4_compare_periods`: diff any window for any GA4 metric, including an exact start and end date
 - `ga4_report`: any report you can describe, with your own dimensions, metrics, filters and sort order, and GA4's own totals
 - `ga4_metadata`: the dimensions and metrics a property can report, custom ones included
+- `ga4_archive`: the nightly copy of your GA4 data kept here, monthly before you connected and daily after; answers even when Google access lapses
 - `correlate_gsc_to_ga4`: the cross-tool one. Search Console clicks per page joined to GA4 sessions, conversions and revenue for that same page
+
+**Bring in Bing Webmaster Tools**
+
+Connect Bing from app.gscpap.com/account/integrations, read-only. The Bing tools answer from a nightly archive of your Bing data.
+
+- `bing_list_sites`: the sites in your Bing Webmaster Tools account
+- `bing_search_performance`: daily Bing clicks and impressions for a site or one query
+- `bing_top_queries`: Bing queries for a site or one page, with clicks, impressions, CTR and position
+- `bing_top_pages`: Bing pages for a site, or the pages Bing showed for one query
+- `bing_crawl_health`: what Bingbot crawled and indexed per day, status codes, robots.txt blocks and current crawl issues
+- `bing_url_info`: what Bing knows about one URL, with its Bing traffic
+- `bing_backlinks`: inbound links Bing has found, with anchor text
+- `bing_sitemaps`: sitemaps and feeds Bing knows, including ones it failed to read
+- `bing_keyword_research`: Bing search demand for any keyword, with weekly history and related keywords
 
 **Manage sites and sitemaps**
 - `list_sites`, `get_site_details`: your verified properties
@@ -112,6 +130,8 @@ Use it in chat:
 > Correlate my Search Console pages with GA4 conversions for the last 28 days. Which top-clicked pages bring zero conversions?
 
 > Why is my CTR 1% at position 4 for this query? Check what else is on that SERP.
+
+> Which queries bring me Bing clicks that Google doesn't?
 
 ## Install
 
@@ -237,7 +257,7 @@ Setup guides for the other clients (Cursor, VS Code with Copilot, Cline, opencod
 ## How it works
 
 - **Hosted bridge**: `mcp.gscpap.com` exposes a streamable-HTTP MCP endpoint. We do the OAuth exchange with Google for you and store an encrypted refresh token.
-- **Per-site allowlist**: Google's scope is account-wide (`webmasters.readonly`), so the server adds a per-user, per-site authorization layer on top. You decide which properties Claude can see.
+- **Per-site allowlist**: Google's scope is account-wide (`webmasters.readonly`), so the server adds a per-user, per-site authorization layer on top. You decide which Search Console sites, GA4 properties and Bing sites Claude can see.
 - **Per-token site scope**: each token can be narrowed to a subset of your authorized sites, at [app.gscpap.com/account/tokens](https://app.gscpap.com/account/tokens) under **Edit access**. Useful for per-client tokens, a scoped CI token, or limiting the blast radius if a token leaks.
 - **Rate limits**: 30 requests per minute and 500 per hour per token, 60 per minute and 1,000 per hour for the account across all its tokens. Live usage is on [app.gscpap.com/account](https://app.gscpap.com/account).
 - **Usage log**: every tool call is logged and shown in your own account at [app.gscpap.com/account](https://app.gscpap.com/account).
@@ -245,11 +265,11 @@ Setup guides for the other clients (Cursor, VS Code with Copilot, Cline, opencod
 
 ## Privacy and data
 
-- Your Google refresh token is encrypted at rest with AES-256-GCM; bearer tokens are stored only as SHA-256 hashes
+- Your Google and Bing refresh tokens are encrypted at rest with AES-256-GCM; bearer tokens are stored only as SHA-256 hashes
 - Aggregate analytics through Google Analytics 4 with IP anonymisation. No marketing pixels, no third-party ad networks. See the [Privacy Policy](https://gscpap.com/privacy)
 - Your data is not sold, rented or traded, and it is not used to train AI models. It is shared only with the providers that run the service, which the Privacy Policy names
 - Use of data received from Google APIs follows the [Google API Services User Data Policy](https://developers.google.com/terms/api-services-user-data-policy), including the Limited Use requirements
-- Revoke at any time from [app.gscpap.com/account/tokens](https://app.gscpap.com/account/tokens), or from your Google account permissions
+- Revoke at any time from [app.gscpap.com/account/tokens](https://app.gscpap.com/account/tokens), or from your Google account permissions. Disconnect Bing at [app.gscpap.com/account/integrations](https://app.gscpap.com/account/integrations)
 
 ## Pricing
 
